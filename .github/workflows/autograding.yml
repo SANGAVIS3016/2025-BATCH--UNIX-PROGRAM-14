@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout student repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Check required files
@@ -19,7 +19,7 @@ jobs:
           test -f starter.sh
           test -f test.sh
 
-      - name: Make test script executable
+      - name: Make test executable
         run: chmod +x test.sh
 
       - name: Run autograder
