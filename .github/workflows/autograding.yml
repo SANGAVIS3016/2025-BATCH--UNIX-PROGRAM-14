@@ -1,29 +1,26 @@
 name: Linux User Management Autograding
 
 on:
-push:
-pull_request:
+  push:
+  pull_request:
 
 jobs:
-grade:
-name: Run Autograder
-runs-on: ubuntu-latest
+  grade:
+    name: Run Autograder
+    runs-on: ubuntu-latest
 
-```
-steps:
+    steps:
+      - name: Checkout student repository
+        uses: actions/checkout@v4
 
-  - name: Checkout student repository
-    uses: actions/checkout@v4
+      - name: Check required files
+        run: |
+          test -f README.md
+          test -f starter.sh
+          test -f test.sh
 
-  - name: Make test script executable
-    run: chmod +x test.sh
+      - name: Make test script executable
+        run: chmod +x test.sh
 
-  - name: Check required files
-    run: |
-      test -f README.md
-      test -f starter.sh
-      test -f test.sh
-
-  - name: Run autograder
-    run: sudo ./test.sh
-```
+      - name: Run autograder
+        run: sudo ./test.sh
