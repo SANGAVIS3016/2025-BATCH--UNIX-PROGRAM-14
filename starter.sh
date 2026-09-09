@@ -1,18 +1,15 @@
 #!/bin/bash
 
+# Define the test user
 USERNAME="student_test"
-PASSWORD="Student@123"
 
-# TODO 1: Create the user
-# Write your command here
+# 1. Add user using useradd
+useradd "$USERNAME"
 
+# 2. Set user password using chpasswd (or passwd)
+echo "$USERNAME:Password123!" | chpasswd
 
-# TODO 2: Set the password
-# Write your command here
-
-
-# TODO 3: Delete the user
-# Write your command here
-
+# 3. Delete user using userdel
+userdel -r "$USERNAME"
 
 echo "User management operations completed."
